@@ -1,2 +1,2 @@
 # wyrpg
-This is the wyrpg github repo for the wy ascendence game
+This is the wyrpg github repo for the wy game
