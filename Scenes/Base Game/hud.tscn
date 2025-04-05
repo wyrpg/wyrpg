@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc861pvudio0q"]
+
+[ext_resource type="Script" uid="uid://c02f1gvd1hou6" path="res://Scenes/Base Game/hud.gd" id="1_a2jil"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_1icdm"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_cc47l"]
+events = [SubResource("InputEventAction_1icdm")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_a2jil")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_right = 28.5
+offset_bottom = 137.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "0"
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -68.5
+offset_right = 576.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "WYRPG!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+shortcut = SubResource("Shortcut_cc47l")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

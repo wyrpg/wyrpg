@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqwg2jku7bjfb"]
+
+[ext_resource type="Script" uid="uid://v83tfiq2qqhs" path="res://Scenes/player.gd" id="1_vgqql"]
+[ext_resource type="Texture2D" uid="uid://bsaholccqk28r" path="res://Assets/Graphics/mc.png" id="2_fkybt"]
+[ext_resource type="PackedScene" uid="uid://616se60iplbu" path="res://Scenes/Weapons/id_lanyard.tscn" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://jg81q8kjya4h" path="res://Assets/Graphics/health-bar.png" id="4_3smsa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1qcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ommy5"]
+radius = 40.0
+height = 128.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_vgqql")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.151659, 0.151659)
+sprite_frames = SubResource("SpriteFrames_h1qcm")
+animation = &"up"
+
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_ommy5")
+
+[node name="ID_Lanyard" parent="." instance=ExtResource("3_x3wgy")]
+position = Vector2(-52, 53)
+
+[node name="HealthBarBackground" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -70.0
+texture = ExtResource("4_3smsa")
+
+[node name="HealthBar" type="TextureRect" parent="."]
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -70.0
+texture = ExtResource("4_3smsa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="PlayerCollisionShape2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ommy5")
+
+[connection signal="body_entered" from="ID_Lanyard" to="." method="_on_id_lanyard_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

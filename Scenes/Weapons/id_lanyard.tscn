@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://616se60iplbu"]
+
+[ext_resource type="Script" uid="uid://coee8sklg3x0q" path="res://Scenes/Weapons/id_lanyard.gd" id="1_pa3nn"]
+[ext_resource type="Texture2D" uid="uid://c50fh5jmaju7d" path="res://Assets/Graphics/id-lanyard.png" id="2_pylph"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8ojh"]
+radius = 7.3
+height = 46.04
+
+[node name="ID_Lanyard" type="Area2D"]
+disable_mode = 1
+script = ExtResource("1_pa3nn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_pylph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.14, 0.695)
+rotation = 0.619592
+shape = SubResource("CapsuleShape2D_m8ojh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

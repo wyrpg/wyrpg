@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cv11u7lkg1xc5"
+path="res://.godot/imported/floor-tile.png-9286798dc7dc885039db2f28ab792988.image"
+
+[deps]
+
+source_file="res://Assets/Graphics/floor-tile.png"
+dest_files=["res://.godot/imported/floor-tile.png-9286798dc7dc885039db2f28ab792988.image"]
+
+[params]
+
